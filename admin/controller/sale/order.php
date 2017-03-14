@@ -798,8 +798,8 @@ class ControllerSaleOrder extends Controller {
 	}
 
 	public function info() {
-		$this->load->model('sale/order');
 
+		$this->load->model('sale/order');
 		if (isset($this->request->get['order_id'])) {
 			$order_id = $this->request->get['order_id'];
 		} else {
@@ -856,7 +856,6 @@ class ControllerSaleOrder extends Controller {
 			$data['entry_notify'] = $this->language->get('entry_notify');
 			$data['entry_override'] = $this->language->get('entry_override');
 			$data['entry_comment'] = $this->language->get('entry_comment');
-
 			$data['help_override'] = $this->language->get('help_override');
 
 			$data['button_invoice_print'] = $this->language->get('button_invoice_print');
@@ -935,7 +934,6 @@ class ControllerSaleOrder extends Controller {
 
 			$data['store_id'] = $order_info['store_id'];
 			$data['store_name'] = $order_info['store_name'];
-
 			if ($order_info['store_id'] == 0) {
 				$data['store_url'] = $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;
 			} else {
