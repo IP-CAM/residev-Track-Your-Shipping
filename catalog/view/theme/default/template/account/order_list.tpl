@@ -100,7 +100,7 @@
                     html += ' </tr>';
                     html += ' <tr>';
                     html += '   <td>' + json['entry_service'] + '</td>';
-                    html += '   <td>' + json['data']['service'] + '</td>';
+                    html += '   <td>' + json['data']['servicecode'] + '</td>';
                     html += ' </tr>';
                     html += ' <tr>';
                     html += '   <td>' + json['entry_status'] + '</td>';
