@@ -523,13 +523,14 @@ class ControllerAccountOrder extends Controller {
 			$json['data']['shippername'] = $ro['rajaongkir']['result']['summary']['shipper_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['origin'];
 			$json['data']['receivername'] = $ro['rajaongkir']['result']['summary']['receiver_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['destination'];
 			$json['data']['servicecode'] = $ro['rajaongkir']['result']['summary']['service_code'];
-
+			if (isset(['rajaongkir']['result']['manifest'])) {
 			foreach ($ro['rajaongkir']['result']['manifest'] as $value) {
 				$json['data']['manifest'][] = array(
 					'desc'=> $value['manifest_description'],
 					'date'=> $value['manifest_date'],
 					'time'=> $value['manifest_time'],
 					'city'=> $value['city_name']);
+			}
 			}
 		}
 		$this->response->addHeader('Content-Type: application/json');

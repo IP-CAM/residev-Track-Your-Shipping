@@ -389,62 +389,62 @@ class ControllerSaleOrder extends Controller {
 	  $data['services'] = array();
 
 	  $data['services'][] = array(
-	    'text'  => 'JNE',
+	    'text'  => 'Jalur Nugraha Ekakurir (JNE)',
 	    'value' => 'jne'
 	  );
 
 	  $data['services'][] = array(
-	    'text'  => 'TIKI',
+	    'text'  => 'Citra Van Titipan Kilat (TIKI)',
 	    'value' => 'tiki'
 	  );
 
 	  $data['services'][] = array(
-	    'text'  => 'POS Indonesia',
+	    'text'  => 'POS Indonesia (POS)',
 	    'value' => 'pos'
 	  );
 
 	  $data['services'][] = array(
-	    'text'  => 'Wahana',
+	    'text'  => 'Wahana Prestasi Logistik (WAHANA)',
 	    'value' => 'wahana'
 	  );
 
 	  $data['services'][] = array(
-	    'text'  => 'J&T Express',
+	    'text'  => 'J&T Express (J&T)',
 	    'value' => 'jnt'
 	  );
 
 		$data['services'][] = array(
-	    'text'  => 'SiCepat Express',
+	    'text'  => 'SiCepat Express (SICEPAT)',
 	    'value' => 'sicepat'
 	  );
 
 		$data['services'][] = array(
-	    'text'  => 'RPX Holding',
+	    'text'  => 'RPX Holding (RPX)',
 	    'value' => 'rpx'
 	  );
 
 		$data['services'][] = array(
-	    'text'  => 'SAP Express',
+	    'text'  => 'SAP Express (SAP)',
 	    'value' => 'sap'
 	  );
 
 		$data['services'][] = array(
-	    'text'  => 'Priority Cargo and Package',
+	    'text'  => 'Priority Cargo and Package (PCP)',
 	    'value' => 'pcp'
 	  );
 
 		$data['services'][] = array(
-	    'text'  => 'JET Express',
+	    'text'  => 'JET Express (JET)',
 	    'value' => 'jet'
 	  );
 
 		$data['services'][] = array(
-	    'text'  => '21 Express',
+	    'text'  => '21 Express (DSE)',
 	    'value' => 'dse'
 	  );
 
 		$data['services'][] = array(
-	    'text'  => 'First Logistics',
+	    'text'  => 'First Logistics (FIRST)',
 	    'value' => 'first'
 	  );
 
