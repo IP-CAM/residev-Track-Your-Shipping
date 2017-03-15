@@ -130,8 +130,8 @@
                     html += '</thead>';
                     html += '<tbody>';
                     html += ' <tr>';
-                    html += '   <td><strong>' + json['coulumn_date'] + '</strong></td>';
-                    html += '   <td><strong>' + json['coulumn_desc'] + '</strong></td>';
+                    html += '   <td><strong>' + json['column_date'] + '</strong></td>';
+                    html += '   <td><strong>' + json['column_desc'] + '</strong></td>';
                     html += ' </tr>';
 
                     for ( var i = 0, l = json['data']['manifest'].length; i < l; i++ ) {

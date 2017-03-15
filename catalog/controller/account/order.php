@@ -491,6 +491,7 @@ class ControllerAccountOrder extends Controller {
 		// Heading
 		$json['heading_title1'] = $this->language->get('heading_title1');
 		$json['heading_title2']        = $this->language->get('heading_title2');
+		$json['heading_title3']        = $this->language->get('heading_title3');
 		// Column
 		$json['column_date']         = $this->language->get('column_date');
 		$json['column_desc']        = $this->language->get('column_desc');
