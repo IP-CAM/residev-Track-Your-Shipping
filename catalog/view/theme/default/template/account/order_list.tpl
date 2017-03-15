@@ -53,7 +53,7 @@
               $.ajax({
                 url: 'index.php?route=account/order/awbpro',
                 type: 'post',
-                data: 'courier=<?php echo $order['couriername'];?>&awb=<?php echo $order['awbnumber']?>',
+                data: 'kurir=<?php echo $order['couriername'];?>&awb=<?php echo $order['awbnumber']?>',
                 dataType: 'json',
                 beforeSend: function() {
                   $('#awbsearch<?php echo $order['order_id'];?>').button('loading');

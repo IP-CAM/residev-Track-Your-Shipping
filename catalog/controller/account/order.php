@@ -484,7 +484,7 @@ class ControllerAccountOrder extends Controller {
 
 		$this->response->redirect($this->url->link('account/order/info', 'order_id=' . $order_id));
 	}
-	
+
 	public function awbpro() {
 		$json = array();
 		$this->load->language('extension/module/awbpro');
@@ -502,7 +502,8 @@ class ControllerAccountOrder extends Controller {
 		$json['entry_couriername']       = $this->language->get('entry_couriername');
 		$json['entry_shippername']       = $this->language->get('entry_shippername');
 		$json['entry_receivername']       = $this->language->get('entry_receivername');
-		if (!isset($this->request->post['courier']) || $this->request->post['courier'] == '') {
+
+		if (!isset($this->request->post['kurir']) || $this->request->post['kurir'] == '') {
 			$json['error']['courier'] = $this->language->get('error_courier');
 		}
 
@@ -510,8 +511,9 @@ class ControllerAccountOrder extends Controller {
 			$json['error']['awb'] = $this->language->get('awb');
 		}
 
-
-		$ro = $this->__getAwb($this->request->post['awb'], $this->request->post['courier']);
+		//print_r($this->request->post['awb']);
+		//print_r($this->request->post['kurir']);
+		$ro = $this->__getAwb($this->request->post['awb'], $this->request->post['kurir']);
 		if ($ro['rajaongkir']['status']['code'] == 400) {
 				$json['error']['warning'] = $ro['rajaongkir']['status']['description'];
 		}
