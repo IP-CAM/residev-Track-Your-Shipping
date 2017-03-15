@@ -1,7 +1,8 @@
 <?php
 // Heading
-$_['heading_title1']        = 'Shipping Information';
-$_['heading_title2']        = 'History';
+$_['heading_title1']        = 'Tracking Your Shipping';
+$_['heading_title2']        = 'Summary';
+$_['heading_title3']        = 'History';
 
 // Column
 $_['column_date']         = 'Date Time';

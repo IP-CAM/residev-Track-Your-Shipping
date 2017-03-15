@@ -27,7 +27,7 @@
               <td class="text-right"><?php echo $column_total; ?></td>
               <td class="text-left"><?php echo $column_date_added; ?></td>
               <!--frd-->
-              <td class="text-left"><?php echo $column_awb.'s'; ?></td>
+              <td class="text-left"><?php echo $column_awb; ?></td>
               <!--frd-->
               <td></td>
             </tr>
@@ -74,15 +74,28 @@
                           $('#awbsearch<?php echo $order['order_id'];?>').after('<div class="text-danger">' + json['error']['courier'] + '</div>');
                 				}
                   }
-                  if (!json['shipping_method']) {
+                  if (json['data']) {
                     $('#modal-shipping').remove();
                     html  = '<div id="modal-shipping" class="modal">';
                     html += '  <div class="modal-dialog">';
                     html += '    <div class="modal-content">';
                     html += '      <div class="modal-header">';
-                    html += '        <h4 class="modal-title">' + json['heading_title1'] + '</h4>';
+                    html += '        <h2 class="modal-title">' + json['heading_title1'] + '</h2>';
                     html += '      </div>';
                     html += '      <div class="modal-body">';
+                    html += '<table class="table table-bordered">';
+                    html += '<thead>';
+                    html += ' <tr>'
+                    html += '   <td colspan="2"><strong>' + json['data']['heading_title2'] + '</strong></td>';
+                    html += ' </tr>';
+                    html += '</thead>';
+                    html += '<tbody>';
+                    html += ' <tr>';
+                    html += '   <td>Clockspeed</td>';
+                    html += '   <td>100mhz</td>';
+                    html += ' </tr>';
+                    html += '</tbody>';
+                    html += '</table>';
 
                     html += '      </div>';
                     html += '      <div class="modal-footer">';

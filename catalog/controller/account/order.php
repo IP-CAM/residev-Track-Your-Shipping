@@ -516,6 +516,12 @@ class ControllerAccountOrder extends Controller {
 				$json['error']['warning'] = $ro['rajaongkir']['status']['description'];
 		}
 
+		$json['data']['awbnumber'] = $ro['rajaongkir']['result']['summary']['waybill_number'];
+		$json['data']['status'] = $ro['rajaongkir']['result']['summary']['status'];
+		$json['data']['awbdate'] = $ro['rajaongkir']['result']['summary']['waybill_date'];
+		$json['data']['couriername'] = $ro['rajaongkir']['result']['summary']['courier_name'];
+		$json['data']['shippername'] = $ro['rajaongkir']['result']['summary']['shipper_name'] . '\n' . $ro['rajaongkir']['result']['summary']['origin'];
+		$json['data']['receivername'] = $ro['rajaongkir']['result']['summary']['receiver_name'] . '\n' . $ro['rajaongkir']['result']['summary']['destination'];
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
