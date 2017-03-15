@@ -526,9 +526,9 @@ class ControllerAccountOrder extends Controller {
 		$json['data']['servicecode'] = $ro['rajaongkir']['result']['summary']['service_code'];
 		foreach ($ro['rajaongkir']['result']['manifest'] as $value) {
 			$json['data']['manifest'][]['desc'] = $value['manifest_description'];
-			$json['data']['manifest'][]['date'] = $value['manifest_date'];
-			$json['data']['manifest'][]['time'] = $value['manifest_time'];
-			$json['data']['manifest'][]['city'] = $value['city_name'];
+			$json['data']['manifest'][]['date'] ='sss';// $value['manifest_date'];
+			$json['data']['manifest'][]['time'] = 'dddd';//$value['manifest_time'];
+			$json['data']['manifest'][]['city'] = 'dfdfd';//$value['city_name'];
 		}
 
 		$this->response->addHeader('Content-Type: application/json');
