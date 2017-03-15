@@ -511,8 +511,8 @@ class ControllerAccountOrder extends Controller {
 			$json['error']['awb'] = $this->language->get('awb');
 		}
 
-		//print_r($this->request->post['awb']);
-		//print_r($this->request->post['kurir']);
+		print_r($this->request->post['awb']);
+		print_r($this->request->post['kurir']);
 		$ro = $this->__getAwb($this->request->post['kurir'], $this->request->post['awb']);
 		if ($ro['rajaongkir']['status']['code'] == 400) {
 				$json['error']['warning'] = $ro['rajaongkir']['status']['description'];
