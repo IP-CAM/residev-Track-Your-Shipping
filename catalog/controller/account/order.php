@@ -515,22 +515,23 @@ class ControllerAccountOrder extends Controller {
 		$ro = $this->__getAwb($this->request->post['kurir'], $this->request->post['awb']);
 		if ($ro['rajaongkir']['status']['code'] == 400) {
 				$json['error']['warning'] = $ro['rajaongkir']['status']['description'];
-		}
+				return;
+		} else {
+			$json['data']['awbnumber'] = $ro['rajaongkir']['result']['summary']['waybill_number'];
+			$json['data']['status'] = $ro['rajaongkir']['result']['summary']['status'];
+			$json['data']['awbdate'] = $ro['rajaongkir']['result']['summary']['waybill_date'];
+			$json['data']['couriername'] = $ro['rajaongkir']['result']['summary']['courier_name'];
+			$json['data']['shippername'] = $ro['rajaongkir']['result']['summary']['shipper_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['origin'];
+			$json['data']['receivername'] = $ro['rajaongkir']['result']['summary']['receiver_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['destination'];
+			$json['data']['servicecode'] = $ro['rajaongkir']['result']['summary']['service_code'];
 
-		$json['data']['awbnumber'] = $ro['rajaongkir']['result']['summary']['waybill_number'];
-		$json['data']['status'] = $ro['rajaongkir']['result']['summary']['status'];
-		$json['data']['awbdate'] = $ro['rajaongkir']['result']['summary']['waybill_date'];
-		$json['data']['couriername'] = $ro['rajaongkir']['result']['summary']['courier_name'];
-		$json['data']['shippername'] = $ro['rajaongkir']['result']['summary']['shipper_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['origin'];
-		$json['data']['receivername'] = $ro['rajaongkir']['result']['summary']['receiver_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['destination'];
-		$json['data']['servicecode'] = $ro['rajaongkir']['result']['summary']['service_code'];
-
-		foreach ($ro['rajaongkir']['result']['manifest'] as $value) {
-			$json['data']['manifest'][] = array(
-				'desc'=> $value['manifest_description'],
-				'date'=> $value['manifest_date'],
-				'time'=> $value['manifest_time'],
-				'city'=> $value['city_name']);
+			foreach ($ro['rajaongkir']['result']['manifest'] as $value) {
+				$json['data']['manifest'][] = array(
+					'desc'=> $value['manifest_description'],
+					'date'=> $value['manifest_date'],
+					'time'=> $value['manifest_time'],
+					'city'=> $value['city_name']);
+			}
 		}
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
