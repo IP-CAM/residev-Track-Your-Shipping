@@ -523,7 +523,7 @@ class ControllerAccountOrder extends Controller {
 			$json['data']['shippername'] = $ro['rajaongkir']['result']['summary']['shipper_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['origin'];
 			$json['data']['receivername'] = $ro['rajaongkir']['result']['summary']['receiver_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['destination'];
 			$json['data']['servicecode'] = $ro['rajaongkir']['result']['summary']['service_code'];
-			if (isset(['rajaongkir']['result']['manifest'])) {
+			if (isset($ro['rajaongkir']['result']['manifest'])) {
 			foreach ($ro['rajaongkir']['result']['manifest'] as $value) {
 				$json['data']['manifest'][] = array(
 					'desc'=> $value['manifest_description'],
