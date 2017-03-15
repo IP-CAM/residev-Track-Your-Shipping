@@ -484,4 +484,73 @@ class ControllerAccountOrder extends Controller {
 
 		$this->response->redirect($this->url->link('account/order/info', 'order_id=' . $order_id));
 	}
+	
+	public function awbpro() {
+		$json = array();
+		$this->load->language('extension/module/awbpro');
+		// Heading
+		$json['heading_title1'] = $this->language->get('heading_title1');
+		$json['heading_title2']        = $this->language->get('heading_title2');
+		// Column
+		$json['column_date']         = $this->language->get('column_date');
+		$json['column_desc']        = $this->language->get('column_desc');
+		// Entry
+		$json['entry_awbnumber']        = $this->language->get('entry_awbnumber');
+		$json['entry_status']           = $this->language->get('entry_status');
+		$json['entry_awbdate']       = $this->language->get('entry_awbdate');
+		$json['entry_service']       = $this->language->get('entry_service');
+		$json['entry_couriername']       = $this->language->get('entry_couriername');
+		$json['entry_shippername']       = $this->language->get('entry_shippername');
+		$json['entry_receivername']       = $this->language->get('entry_receivername');
+		if (!isset($this->request->post['courier']) || $this->request->post['courier'] == '') {
+			$json['error']['courier'] = $this->language->get('error_courier');
+		}
+
+		if (!isset($this->request->post['awb']) || $this->request->post['awb'] == '') {
+			$json['error']['awb'] = $this->language->get('awb');
+		}
+
+
+		$ro = $this->__getAwb($this->request->post['awb'], $this->request->post['courier']);
+		if ($ro['rajaongkir']['status']['code'] == 400) {
+				$json['error']['warning'] = $ro['rajaongkir']['status']['description'];
+		}
+
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	public function __getAwb($awb, $cname) {
+		//$apikey = $this->config->get('shindopro_apikey');
+		$apikey = 'c40fa24b18df68e9cae29aa8541b2323';//$this->config->get('shindopro_apikey');
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'http://pro.rajaongkir.com/api/waybill',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "POST",
+			CURLOPT_POSTFIELDS => 'waybill=<?php echo $awb;?>&courier=<?php echo $cname;?>',
+			CURLOPT_HTTPHEADER => array(
+				"content-type: application/x-www-form-urlencoded",
+				"key: ".$apikey
+			),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+			return "cURL Error #:" . $err;
+		} else {
+			return json_decode($response, true);
+		}
+	}
+
+
 }

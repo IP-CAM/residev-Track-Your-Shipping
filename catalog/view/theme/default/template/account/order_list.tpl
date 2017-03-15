@@ -44,10 +44,69 @@
               <td class="text-left"><?php echo $order['date_added']; ?></td>
               <!--frd-->
               <td class="text-left"><?php echo $order['couriername']; ?></td>
-              <td class="text-left"><?php echo $order['awbnumber']; ?></td>
+              <td class="text-left"><button class="btn btn-info" id="awbsearch<?php echo $order['order_id'];?>"><?php echo $order['awbnumber']; ?></button></td>
               <!---->
               <td class="text-right"><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
             </tr>
+            <script type="text/javascript"><!--
+            $('#awbsearch<?php echo $order['order_id'];?>').on('click', function() {
+              $.ajax({
+                url: 'index.php?route=account/order/awbpro',
+                type: 'post',
+                data: 'courier=<?php echo $order['couriername'];?>&awb=<?php echo $order['awbnumber']?>',
+                dataType: 'json',
+                beforeSend: function() {
+                  $('#awbsearch<?php echo $order['order_id'];?>').button('loading');
+                },
+                complete: function() {
+                  $('#awbsearch<?php echo $order['order_id'];?>').button('reset');
+                },
+                success: function(json) {
+                  $('.alert, .text-danger').remove();
+                  if (json['error']) {
+        				        if (json['error']['warning']) {
+  					              $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+  					              $('html, body').animate({ scrollTop: 0 }, 'slow');
+        				        }
+
+        				        if (json['error']['awb']) {
+        					        $('#awbsearch<?php echo $order['order_id'];?>').after('<div class="text-danger">' + json['error']['awb'] + '</div>');
+        				        }
+                				if (json['error']['courier']) {
+                          $('#awbsearch<?php echo $order['order_id'];?>').after('<div class="text-danger">' + json['error']['courier'] + '</div>');
+                				}
+                  }
+                  if (!json['shipping_method']) {
+                    $('#modal-shipping').remove();
+                    html  = '<div id="modal-shipping" class="modal">';
+                    html += '  <div class="modal-dialog">';
+                    html += '    <div class="modal-content">';
+                    html += '      <div class="modal-header">';
+                    html += '        <h4 class="modal-title">' + json['heading_title1'] + '</h4>';
+                    html += '      </div>';
+                    html += '      <div class="modal-body">';
+
+                    html += '      </div>';
+                    html += '      <div class="modal-footer">';
+                    html += '        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo 'Close'; ?></button>';
+
+
+                    html += '      </div>';
+                    html += '    </div>';
+                    html += '  </div>';
+                    html += '</div> ';
+
+                    $('body').append(html);
+
+                    $('#modal-shipping').modal('show');
+                  }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                  alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+              });
+            });
+            </script>
             <?php } ?>
           </tbody>
         </table>
