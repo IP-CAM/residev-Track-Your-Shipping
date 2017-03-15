@@ -952,8 +952,6 @@
                     <input type="text" name="awbnumber" value="<?php echo $awbnumber; ?>" id="input-awbnumber" class="form-control" />
                   </div>
                 </div>
-
-
                 <!--frd-->
 
               </fieldset>
