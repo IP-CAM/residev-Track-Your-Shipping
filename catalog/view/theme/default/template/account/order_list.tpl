@@ -136,8 +136,8 @@
 
                     //for ( var i = 0, l = json['data']['manifest'].length; i < l; i++ ) {
                       html += ' <tr>';
-                      html += '   <td>' + json['data']['manifest'][0]['manifest_date'] + ' ' + json['data']['manifest'][0]['manifest_time'] + '</td>';
-                      html += '   <td>' + json['data']['manifest'][0]['manifest_description'] + ' [' + json['data']['manifest'][0]['city_name'] + '] '+ '</td>';
+                      html += '   <td>' + json['data']['manifest'][0]['date'] + ' ' + json['data']['manifest'][0]['time'] + '</td>';
+                      html += '   <td>' + json['data']['manifest'][0]['desc'] + ' [' + json['data']['manifest'][0]['city'] + '] '+ '</td>';
                       html += ' </tr>';
                     //}
                     html += '</tbody>';
