@@ -387,26 +387,67 @@ class ControllerSaleOrder extends Controller {
 	public function getForm() {
 		//frd
 	  $data['services'] = array();
+
 	  $data['services'][] = array(
 	    'text'  => 'JNE',
 	    'value' => 'jne'
 	  );
+
 	  $data['services'][] = array(
 	    'text'  => 'TIKI',
 	    'value' => 'tiki'
 	  );
+
 	  $data['services'][] = array(
 	    'text'  => 'POS Indonesia',
 	    'value' => 'pos'
 	  );
+
 	  $data['services'][] = array(
 	    'text'  => 'Wahana',
 	    'value' => 'wahana'
 	  );
+
 	  $data['services'][] = array(
-	    'text'  => 'J&T',
+	    'text'  => 'J&T Express',
 	    'value' => 'jnt'
 	  );
+
+		$data['services'][] = array(
+	    'text'  => 'SiCepat Express',
+	    'value' => 'sicepat'
+	  );
+
+		$data['services'][] = array(
+	    'text'  => 'RPX Holding',
+	    'value' => 'rpx'
+	  );
+
+		$data['services'][] = array(
+	    'text'  => 'SAP Express',
+	    'value' => 'sap'
+	  );
+
+		$data['services'][] = array(
+	    'text'  => 'Priority Cargo and Package',
+	    'value' => 'pcp'
+	  );
+
+		$data['services'][] = array(
+	    'text'  => 'JET Express',
+	    'value' => 'jet'
+	  );
+
+		$data['services'][] = array(
+	    'text'  => '21 Express',
+	    'value' => 'dse'
+	  );
+
+		$data['services'][] = array(
+	    'text'  => 'First Logistics',
+	    'value' => 'first'
+	  );
+
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
