@@ -522,7 +522,7 @@ class ControllerAccountOrder extends Controller {
 		$json['data']['couriername'] = $ro['rajaongkir']['result']['summary']['courier_name'];
 		$json['data']['shippername'] = $ro['rajaongkir']['result']['summary']['shipper_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['origin'];
 		$json['data']['receivername'] = $ro['rajaongkir']['result']['summary']['receiver_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['destination'];
-		$json['data']['servicecode'] = $ro['rajaongkir']['result']['summary']['servicecode'];
+		$json['data']['servicecode'] = $ro['rajaongkir']['result']['summary']['service_code'];
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
