@@ -535,7 +535,7 @@ class ControllerAccountOrder extends Controller {
 			CURLOPT_TIMEOUT => 30,
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => "POST",
-			CURLOPT_POSTFIELDS => 'waybill=0110891700357162&courier=jne',
+			CURLOPT_POSTFIELDS => 'waybill=<?echo $awb;?>&courier=<?php echo $awb;?>',
 			CURLOPT_HTTPHEADER => array(
 				"content-type: application/x-www-form-urlencoded",
 				"key: ".$apikey
