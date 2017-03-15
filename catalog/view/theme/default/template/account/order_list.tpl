@@ -74,7 +74,7 @@
                           $('#awbsearch<?php echo $order['order_id'];?>').after('<div class="text-danger">' + json['error']['courier'] + '</div>');
                 				}
                   }
-                  if (typeof json['data'] <> "undefined" && json['data'] <> null) {
+                  if (typeof (json['data']) != "undefined") {
                     $('#modal-shipping').remove();
                     html  = '<div id="modal-shipping" class="modal">';
                     html += '  <div class="modal-dialog">';
