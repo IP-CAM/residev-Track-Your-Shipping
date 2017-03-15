@@ -134,12 +134,12 @@
                     html += '   <td><strong>' + json['column_desc'] + '</strong></td>';
                     html += ' </tr>';
 
-                    //for ( var i = 0, l = json['data']['manifest'].length; i < l; i++ ) {
+                    for ( var i = 0, l = json['data']['manifest'].length; i < l; i++ ) {
                       html += ' <tr>';
-                      html += '   <td>' + json['data']['manifest'][0]['date'] + ' ' + json['data']['manifest'][0]['time'] + '</td>';
-                      html += '   <td>' + json['data']['manifest'][0]['desc'] + ' [' + json['data']['manifest'][0]['city'] + '] '+ '</td>';
+                      html += '   <td>' + json['data']['manifest'][i]['date'] + ' ' + json['data']['manifest'][i]['time'] + '</td>';
+                      html += '   <td>' + json['data']['manifest'][i]['desc'] + ' [' + json['data']['manifest'][i]['city'] + '] '+ '</td>';
                       html += ' </tr>';
-                    //}
+                    }
                     html += '</tbody>';
                     html += '</table>';
 
