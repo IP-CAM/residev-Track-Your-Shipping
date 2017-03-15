@@ -511,8 +511,6 @@ class ControllerAccountOrder extends Controller {
 			$json['error']['awb'] = $this->language->get('awb');
 		}
 
-		print_r($this->request->post['awb']);
-		print_r($this->request->post['kurir']);
 		$ro = $this->__getAwb($this->request->post['kurir'], $this->request->post['awb']);
 		if ($ro['rajaongkir']['status']['code'] == 400) {
 				$json['error']['warning'] = $ro['rajaongkir']['status']['description'];
@@ -523,7 +521,7 @@ class ControllerAccountOrder extends Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
-	public function __getAwb($cname, $awb) {
+	function __getAwb($cname, $awb) {
 		//$apikey = $this->config->get('shindopro_apikey');
 		$apikey = 'c40fa24b18df68e9cae29aa8541b2323';//$this->config->get('shindopro_apikey');
 		$curl = curl_init();
@@ -535,7 +533,7 @@ class ControllerAccountOrder extends Controller {
 			CURLOPT_TIMEOUT => 30,
 			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 			CURLOPT_CUSTOMREQUEST => "POST",
-			CURLOPT_POSTFIELDS => 'waybill=<?echo $awb;?>&courier=<?php echo $awb;?>',
+			CURLOPT_POSTFIELDS => 'waybill=' . $awb . '&courier=' . $cname,
 			CURLOPT_HTTPHEADER => array(
 				"content-type: application/x-www-form-urlencoded",
 				"key: ".$apikey
