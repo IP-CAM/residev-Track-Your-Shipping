@@ -83,6 +83,7 @@
                     html += '        <h2 class="modal-title">' + json['heading_title1'] + '</h2>';
                     html += '      </div>';
                     html += '      <div class="modal-body">';
+
                     html += '<table class="table table-bordered">';
                     html += '<thead>';
                     html += ' <tr>'
@@ -104,7 +105,7 @@
                     html += ' </tr>';
                     html += ' <tr>';
                     html += '   <td>' + json['entry_status'] + '</td>';
-                    html += '   <td>' + json['data']['status'] + '</td>';
+                    html += '   <td><strong>' + json['data']['status'] + '</strong></td>';
                     html += ' </tr>';
                     html += ' <tr>';
                     html += '   <td>' + json['entry_awbdate'] + '</td>';
@@ -118,6 +119,27 @@
                     html += '   <td>' + json['entry_receivername'] + '</td>';
                     html += '   <td>' + json['data']['receivername'] + '</td>';
                     html += ' </tr>';
+                    html += '</tbody>';
+                    html += '</table>';
+
+                    html += '<table class="table table-bordered">';
+                    html += '<thead>';
+                    html += ' <tr>'
+                    html += '   <td colspan="2"><strong>' + json['heading_title3'] + '</strong></td>';
+                    html += ' </tr>';
+                    html += '</thead>';
+                    html += '<tbody>';
+                    html += ' <tr>';
+                    html += '   <td><strong>' + json['coulumn_date'] + '</strong></td>';
+                    html += '   <td><strong>' + json['coulumn_desc'] + '</strong></td>';
+                    html += ' </tr>';
+
+                    for ( var i = 0, l = json['data']['manifest'].length; i < l; i++ ) {
+                      html += ' <tr>';
+                      html += '   <td>' + json['data']['manifest'][i]['manifest_date'] + ' ' + json['data']['manifest'][i]['manifest_time'] + '</td>';
+                      html += '   <td>' + json['data']['manifest'][i]['manifest_description'] + ' [' + json['data']['manifest'][i]['city_name'] + '] '+ '</td>';
+                      html += ' </tr>';
+                    }
                     html += '</tbody>';
                     html += '</table>';
 
