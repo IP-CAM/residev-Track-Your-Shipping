@@ -27,7 +27,7 @@
               <td class="text-right"><?php echo $column_total; ?></td>
               <td class="text-left"><?php echo $column_date_added; ?></td>
               <!--frd-->
-              <td class="text-left"><?php echo $column_awb; ?></td>
+              <td class="text-left"><?php echo $column_awb.'s'; ?></td>
               <!--frd-->
               <td></td>
             </tr>
