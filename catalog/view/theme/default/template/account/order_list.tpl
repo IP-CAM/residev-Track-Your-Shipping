@@ -42,7 +42,11 @@
               <td class="text-right"><?php echo $order['total']; ?></td>
               <td class="text-left"><?php echo $order['date_added']; ?></td>
               <!--frd-->
+              <?php if ($order['awbnumber'] !== '') {?>
               <td class="text-left"><button class="btn btn-info" id="awbsearch<?php echo $order['order_id'];?>"><?php echo $order['couriername'] . ' - ' . $order['awbnumber']; ?></button></td>
+              <?php } else { ?>
+                <td></td>
+              <?php } ?>
               <!---->
               <td class="text-right"><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
             </tr>
