@@ -86,8 +86,8 @@ $_['entry_status']           = 'Status';
 $_['entry_awbdate']       = 'Shipping Date';
 $_['entry_service']       = 'Service';
 $_['entry_couriername']       = 'Courier Name';
-$_['entry_shippername']       = 'Shipper By';
-$_['entry_receivername']       = 'Shipping To';
+$_['entry_shippername']       = 'Shipper';
+$_['entry_receivername']       = 'Receiver';
 
  // error
  $_['error_courier']       = 'Courier Name required';
