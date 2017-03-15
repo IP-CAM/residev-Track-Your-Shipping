@@ -487,7 +487,7 @@ class ControllerAccountOrder extends Controller {
 
 	public function awbpro() {
 		$json = array();
-		$this->load->language('extension/module/awbpro');
+		//$this->load->language('extension/module/awbpro');
 		// Heading
 		$json['heading_title1'] = $this->language->get('heading_title1');
 		$json['heading_title2']        = $this->language->get('heading_title2');
