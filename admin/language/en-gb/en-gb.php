@@ -154,3 +154,23 @@ $_['error_curl']                    = 'CURL: Error Code(%s): %s';
 //frd
 $_['entry_couriername']       = 'Courier Name';
 $_['entry_awbnumber']       = 'Air Waybill Number';
+$_['text_awb']       = 'Track your Shipping';
+// Heading
+$_['heading_title1']        = 'Tracking Your Shipping';
+$_['heading_title2']        = 'Summary';
+$_['heading_title3']        = 'History';
+// Column
+$_['column_date']         = 'Date Time';
+$_['column_desc']        = 'Description';
+// Entry
+$_['entry_awbnumber']        = 'Air Waybill Number';
+$_['entry_status']           = 'Status';
+$_['entry_awbdate']       = 'Shipping Date';
+$_['entry_service']       = 'Service';
+$_['entry_couriername']       = 'Courier Name';
+$_['entry_shippername']       = 'Shipper';
+$_['entry_receivername']       = 'Receiver';
+ // error
+ $_['error_courier']       = 'Courier Name required';
+ $_['error_awb']       = 'Air Waybill Required';
+//------

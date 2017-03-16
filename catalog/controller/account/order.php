@@ -484,7 +484,7 @@ class ControllerAccountOrder extends Controller {
 
 		$this->response->redirect($this->url->link('account/order/info', 'order_id=' . $order_id));
 	}
-
+	//frd
 	public function awbpro() {
 		$json = array();
 		//$this->load->language('extension/module/awbpro');
@@ -536,7 +536,7 @@ class ControllerAccountOrder extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
-
+	//frd
 	function __getAwb($cname, $awb) {
 		//$apikey = $this->config->get('shindopro_apikey');
 		$apikey = 'c40fa24b18df68e9cae29aa8541b2323';//$this->config->get('shindopro_apikey');

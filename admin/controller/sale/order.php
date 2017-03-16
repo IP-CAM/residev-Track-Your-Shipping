@@ -848,7 +848,7 @@ class ControllerSaleOrder extends Controller {
 		}
 
 		$order_info = $this->model_sale_order->getOrder($order_id);
-
+		//print_r($order_info);
 		if ($order_info) {
 			$this->load->language('sale/order');
 
@@ -886,7 +886,9 @@ class ControllerSaleOrder extends Controller {
 			$data['text_history'] = $this->language->get('text_history');
 			$data['text_history_add'] = $this->language->get('text_history_add');
 			$data['text_loading'] = $this->language->get('text_loading');
-
+			//frd
+			$data['text_awb'] = $this->language->get('text_awb');
+			//--
 			$data['column_product'] = $this->language->get('column_product');
 			$data['column_model'] = $this->language->get('column_model');
 			$data['column_quantity'] = $this->language->get('column_quantity');
@@ -1013,7 +1015,10 @@ class ControllerSaleOrder extends Controller {
 
 			$data['shipping_method'] = $order_info['shipping_method'];
 			$data['payment_method'] = $order_info['payment_method'];
-
+			//frd
+			$data['awbnumber'] = $order_info['awbnumber'];
+			$data['couriername'] = $order_info['couriername'];
+			//--
 			// Payment Address
 			if ($order_info['payment_address_format']) {
 				$format = $order_info['payment_address_format'];
@@ -2078,4 +2083,89 @@ class ControllerSaleOrder extends Controller {
 
 		$this->response->setOutput($this->load->view('sale/order_shipping', $data));
 	}
+	//frd
+	public function awbpro() {
+		$json = array();
+		//$this->load->language('extension/module/awbpro');
+		// Heading
+		$json['heading_title1'] = $this->language->get('heading_title1');
+		$json['heading_title2']        = $this->language->get('heading_title2');
+		$json['heading_title3']        = $this->language->get('heading_title3');
+		// Column
+		$json['column_date']         = $this->language->get('column_date');
+		$json['column_desc']        = $this->language->get('column_desc');
+		// Entry
+		$json['entry_awbnumber']        = $this->language->get('entry_awbnumber');
+		$json['entry_status']           = $this->language->get('entry_status');
+		$json['entry_awbdate']       = $this->language->get('entry_awbdate');
+		$json['entry_service']       = $this->language->get('entry_service');
+		$json['entry_couriername']       = $this->language->get('entry_couriername');
+		$json['entry_shippername']       = $this->language->get('entry_shippername');
+		$json['entry_receivername']       = $this->language->get('entry_receivername');
+
+		if (!isset($this->request->post['kurir']) || $this->request->post['kurir'] == '') {
+			$json['error']['courier'] = $this->language->get('error_courier');
+		}
+
+		if (!isset($this->request->post['awb']) || $this->request->post['awb'] == '') {
+			$json['error']['awb'] = $this->language->get('awb');
+		}
+
+		$ro = $this->__getAwb($this->request->post['kurir'], $this->request->post['awb']);
+		if ($ro['rajaongkir']['status']['description'] <> 'OK') {
+				$json['error']['warning'] = $ro['rajaongkir']['status']['description'];
+		} else {
+			$json['data']['awbnumber'] = $ro['rajaongkir']['result']['summary']['waybill_number'];
+			$json['data']['status'] = $ro['rajaongkir']['result']['summary']['status'];
+			$json['data']['awbdate'] = $ro['rajaongkir']['result']['summary']['waybill_date'];
+			$json['data']['couriername'] = $ro['rajaongkir']['result']['summary']['courier_name'];
+			$json['data']['shippername'] = $ro['rajaongkir']['result']['summary']['shipper_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['origin'];
+			$json['data']['receivername'] = $ro['rajaongkir']['result']['summary']['receiver_name'] . '<br>' . $ro['rajaongkir']['result']['summary']['destination'];
+			$json['data']['servicecode'] = $ro['rajaongkir']['result']['summary']['service_code'];
+			if (isset($ro['rajaongkir']['result']['manifest'])) {
+			foreach ($ro['rajaongkir']['result']['manifest'] as $value) {
+				$json['data']['manifest'][] = array(
+					'desc'=> $value['manifest_description'],
+					'date'=> $value['manifest_date'],
+					'time'=> $value['manifest_time'],
+					'city'=> $value['city_name']);
+			}
+			}
+		}
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	//frd
+	function __getAwb($cname, $awb) {
+		//$apikey = $this->config->get('shindopro_apikey');
+		$apikey = 'c40fa24b18df68e9cae29aa8541b2323';//$this->config->get('shindopro_apikey');
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'http://pro.rajaongkir.com/api/waybill',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "POST",
+			CURLOPT_POSTFIELDS => 'waybill=' . $awb . '&courier=' . $cname,
+			CURLOPT_HTTPHEADER => array(
+				"content-type: application/x-www-form-urlencoded",
+				"key: ".$apikey
+			),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+			return "cURL Error #:" . $err;
+		} else {
+			return json_decode($response, true);
+		}
+	}
+
 }
