@@ -41,7 +41,7 @@
               <!--frd-->
               <?php if ($awbnumber) { ?>
               <tr>
-                <td><button id="awbsearch" data-toggle="tooltip" title="<?php echo $text_awb; ?>" class="btn btn-info btn-xs"><i class="fa fa-question fa-fw"></i></button></td>
+                <td><button id="awbsearch" data-toggle="tooltip" title="<?php echo $text_awb; ?>" class="btn btn-info btn-xs"><i class="fa fa-eye fa-fw"></i></button></td>
                 <td><?php echo $couriername; ?> - <?php echo $awbnumber; ?></td>
               </tr>
               <?php } ?>
