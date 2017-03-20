@@ -143,7 +143,7 @@
                         html += ' <tr>';
                         html += '   <td>' + json['data']['manifest'][i]['date'] + ' ' + json['data']['manifest'][i]['time'] + '</td>';
                         html += '   <td>' + json['data']['manifest'][i]['desc'];
-                        if (typeof (json['data'][i]['city']) != "undefined") {
+                        if (typeof (json['data']['manifest'][i]['city']) != "undefined") {
                           html += '<br>' + json['data']['manifest'][i]['city'];
                         }
                         html += '</td>';
