@@ -50,6 +50,7 @@
               <!---->
               <td class="text-right"><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
             </tr>
+            <!--frd-->
             <script type="text/javascript"><!--
             $('#awbsearch<?php echo $order['order_id'];?>').on('click', function() {
               $.ajax({
@@ -141,7 +142,10 @@
                       for ( var i = 0, l = json['data']['manifest'].length; i < l; i++ ) {
                         html += ' <tr>';
                         html += '   <td>' + json['data']['manifest'][i]['date'] + ' ' + json['data']['manifest'][i]['time'] + '</td>';
-                        html += '   <td>' + json['data']['manifest'][i]['desc'] + ' [' + json['data']['manifest'][i]['city'] + '] '+ '</td>';
+                        html += '   <td>' + json['data']['manifest'][i]['desc'];
+                        if (typeof (json['data'][i]['city']) != "undefined") {
+                        html += '<br>' + json['data']['manifest'][i]['city'];
+                        html += '</td>';
                         html += ' </tr>';
                       }
                     }
