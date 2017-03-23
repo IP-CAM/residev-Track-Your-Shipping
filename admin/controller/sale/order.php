@@ -385,7 +385,7 @@ class ControllerSaleOrder extends Controller {
 	}
 
 	public function getForm() {
-		//frd
+		//frd 1
 	  $data['services'] = array();
 
 	  $data['services'][] = array(
@@ -472,7 +472,7 @@ class ControllerSaleOrder extends Controller {
 		$data['entry_fax'] = $this->language->get('entry_fax');
 		$data['entry_comment'] = $this->language->get('entry_comment');
 		$data['entry_affiliate'] = $this->language->get('entry_affiliate');
-		//frd
+		//frd 2
 		$data['entry_couriername'] =  $this->language->get('entry_couriername');
 		$data['entry_awbnumber'] =  $this->language->get('entry_awbnumber');
 
@@ -635,7 +635,7 @@ class ControllerSaleOrder extends Controller {
 			$data['shipping_custom_field'] = $order_info['shipping_custom_field'];
 			$data['shipping_method'] = $order_info['shipping_method'];
 			$data['shipping_code'] = $order_info['shipping_code'];
-			//frd
+			//frd 3
 	    $data['awbnumber'] = $order_info['awbnumber'];
 	    $data['couriername'] = $order_info['couriername'];
 
@@ -739,7 +739,7 @@ class ControllerSaleOrder extends Controller {
 			$data['coupon'] = '';
 			$data['voucher'] = '';
 			$data['reward'] = '';
-			//frd
+			//frd 4
 			$data['couriername'] = '';
 	    $data['awbnumber'] = '';
 
@@ -886,7 +886,7 @@ class ControllerSaleOrder extends Controller {
 			$data['text_history'] = $this->language->get('text_history');
 			$data['text_history_add'] = $this->language->get('text_history_add');
 			$data['text_loading'] = $this->language->get('text_loading');
-			//frd
+			//frd 5
 			$data['text_awb'] = $this->language->get('text_awb');
 			//--
 			$data['column_product'] = $this->language->get('column_product');
@@ -1015,7 +1015,7 @@ class ControllerSaleOrder extends Controller {
 
 			$data['shipping_method'] = $order_info['shipping_method'];
 			$data['payment_method'] = $order_info['payment_method'];
-			//frd
+			//frd 6
 			$data['awbnumber'] = $order_info['awbnumber'];
 			$data['couriername'] = $order_info['couriername'];
 			//--
@@ -2083,7 +2083,7 @@ class ControllerSaleOrder extends Controller {
 
 		$this->response->setOutput($this->load->view('sale/order_shipping', $data));
 	}
-	//frd
+	//frd 7
 	public function awbpro() {
 		$json = array();
 		//$this->load->language('extension/module/awbpro');
